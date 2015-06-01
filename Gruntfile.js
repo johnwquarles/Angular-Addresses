@@ -1,34 +1,21 @@
-<<<<<<< HEAD
-var LIVERELOAD_PORT = 35729;
 
 module.exports = function(grunt) {
 
-  // grunt.loadNpmTasks('grunt-contrib-clean');
-  // grunt.loadNpmTasks('grunt-contrib-copy');
-  // grunt.loadNpmTasks('grunt-contrib-jade');
-  // grunt.loadNpmTasks('grunt-babel');
-  // grunt.loadNpmTasks('grunt-sass');
-
-=======
-module.exports = function(grunt) {
-
->>>>>>> upstream/master
   require('load-grunt-tasks')(grunt);
+
+  function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min)) + min;
+  }
+
+  var randomPort = getRandomInt(3000, 65536)
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     autoprefixer: {
-<<<<<<< HEAD
-    	main: {
-        options: ['>1% in US'],
-        src: 'public/css/main.css'
-    	}
-=======
       main: {
         options: ['>1% in US'],
         src: 'public/css/main.css'
       }
->>>>>>> upstream/master
     },
     babel: {
       dev: {
@@ -57,48 +44,25 @@ module.exports = function(grunt) {
     },
     bower_concat: {
       main: {
-<<<<<<< HEAD
-      	dest: 'public/lib/build.js',
-      	cssDest: 'public/lib/build.css'
-=======
         dest: 'public/lib/build.js',
         cssDest: 'public/lib/build.css'
->>>>>>> upstream/master
       }
     },
     clean: ['public'],
     connect: {
-<<<<<<< HEAD
-	    main: {
-	      options: {
-	        port: 8080,
-	        base: 'public/',
-	        open: true,
-	        keepalive: true,
-	        livereload: LIVERELOAD_PORT
-	      }
-	    }
-	  },
-=======
       main: {
         options: {
-          port: 8080,
+          port: randomPort,
           base: 'public/',
           open: true,
           livereload: true
         }
       }
     },
->>>>>>> upstream/master
     copy: {
       main: {
         files: [
           {
-<<<<<<< HEAD
-          	// copy over everything that the
-          	// preprocessor tasks won't.
-=======
->>>>>>> upstream/master
             expand: true,
             cwd: 'src/',
             src: [
@@ -148,65 +112,6 @@ module.exports = function(grunt) {
       }
     },
     sass: {
-<<<<<<< HEAD
-    	prod: {
-    		options: {
-    			outputStyle: 'compressed',
-    		},
-    		files: {
-    			'public/css/main.css': 'src/_styles/main.scss'
-    		}
-    	},
-    	dev: {
-    		files: {
-    			'public/css/main.css': 'src/_styles/main.scss'
-    		},
-    		options: {
-    		  sourceMap: true,
-    		  sourceMapEmbed: true
-    		}
-    	}
-    },
-    uglify: {
-    	bower: {
-    		files: {
-    			'public/lib/build.js': 'public/lib/build.js'
-    		}
-    	},
-    	main: {
-    		files: [
-    		{
-    			expand: true,
-    			cwd: 'public/',
-    			src: ['**/*.js'],
-    			dest: 'public/'
-    		}]
-    	}
-    },
-    watch: {
-    	livereload: {
-    		options: {
-    			livereload: LIVERELOAD_PORT,
-    		},
-    		files: [
-          'public/css/main.css',
-          'public/js/**/*.js',
-          'public/**/*.html'
-    		]
-    	},
-    	sass: {
-    		files: ['src/**/*.scss'],
-    		tasks: ['sass:dev']
-    	},
-    	jade: {
-    		files: ['src/**/*.jade'],
-    		tasks: ['jade:dev']
-    	},
-    	babel: {
-    		files: ['src/js/**/*.js'],
-    		tasks: ['babel:dev']
-    	}
-=======
       prod: {
         options: {
           outputStyle: 'compressed'
@@ -266,8 +171,6 @@ module.exports = function(grunt) {
         files: ['src/js/**/*.js'],
         tasks: ['babel:dev']
       }
-
->>>>>>> upstream/master
     }
   });
 
